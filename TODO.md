@@ -1,6 +1,7 @@
 # TODO
 
-- [ ] Add a header
+- [x] Add a header
+- [ ] Button the view button to the right of the title
 - [ ] Add a main content component
     - [ ] This should contain 20+ images
     - [ ] The users should be able to choose between
@@ -11,7 +12,7 @@
             - [ ] Small: 2 Images per row
             - [ ] Medium: 4 images per row
             - [ ] Large: 8 images per row
-- [ ] Add a footer
+- [x] Add a footer
     - Use `filter: drop-shadoow(...)` for hover glow styling
 - [ ] Style the application depending on screen size:
     - [ ] Small
