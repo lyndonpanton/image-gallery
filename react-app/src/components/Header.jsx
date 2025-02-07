@@ -7,7 +7,6 @@ const Header = () => {
 
     function changeView() {
         setCurrentView((currentView + 1) % view.length);
-        console.log(currentView);
     }
 
     return (

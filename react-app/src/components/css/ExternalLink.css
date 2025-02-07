@@ -1,0 +1,116 @@
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg)
+    }
+
+    50% {
+        transform: rotate(180deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.external-icon {
+    font-size: 4em;
+}
+
+.fa-font-awesome:hover {
+    text-shadow: 0px 0px 10px #538DD7;
+}
+
+.fa-react {
+    /* animation-name: rotation;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear; */
+    animation: rotation 10s infinite linear;
+}
+
+.fa-react:hover {
+    text-shadow: 0px 0px 10px #61DBFB;
+}
+
+.project-link {
+    color: white;
+    font-size: 2em;
+    /* font-size: 32px; */
+    text-decoration: none;
+}
+
+.project-link:hover {
+    color: chartreuse;
+    text-decoration: underline;
+    text-shadow: 0px 0px 10px chartreuse;
+}
+
+.social-icon, .technology-icon {
+    color: white;
+}
+
+.social-icon-github:hover {
+    color: blueviolet;
+    text-shadow: 0px 0px 20px blueviolet;
+}
+
+.technology-icon-fontawesome:hover {
+    color: #538DD7;
+}
+
+.technology-icons {
+    display: inline;
+}
+
+.technology-icon-react:hover {
+    color: #61DBFB;
+}
+
+.technology-icon-vite:hover {
+    text-shadow: 0px 0px 20px orange;
+    color: #F4C01B
+}
+
+.external-icons i {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.external-icons {
+    display: flex;
+    justify-content: space-around;
+
+    margin: 30px 0;
+}
+
+/* Tablet, Laptop */
+@media screen and (max-width: 1000px) {
+    /* external-icon: 4, fa-vite: 1, project-link: 2 */
+    .external-icon {
+        font-size: 3.5em;
+    }
+
+    .fa-vite {
+        width: 0.875em;
+    }
+
+    .project-link {
+        font-size: 24px;
+    }
+}
+
+/* Phone */
+@media screen and (max-width: 600px) {
+    .external-icon {
+        font-size: 2em;
+    }
+
+    .fa-vite {
+        width: 1em;
+    }
+
+    .project-link {
+        font-size: 16px;
+    }
+    
+}
