@@ -1,13 +1,19 @@
+import { useState } from 'react';
 import './css/Header.css';
 
 const Header = () => {
+    const [currentView, setCurrentView] = useState(0);
     const view = ["single", "triple", "full"];
-    let currentView = 0;
+
+    function changeView() {
+        setCurrentView((currentView + 1) % view.length);
+        console.log(currentView);
+    }
 
     return (
         <header>
             <h1>Image Gallery</h1>
-            <button className="button-image-view">
+            <button onClick={ changeView } className="button-image-view">
                 { 
                     view[currentView][0].toUpperCase()
                     + view[currentView].substring(1)
