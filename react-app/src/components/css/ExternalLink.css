@@ -84,7 +84,7 @@
 }
 
 /* Tablet, Laptop */
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 800px) {
     /* external-icon: 4, fa-vite: 1, project-link: 2 */
     .external-icon {
         font-size: 3.5em;
@@ -100,7 +100,7 @@
 }
 
 /* Phone */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 500px) {
     .external-icon {
         font-size: 2em;
     }
