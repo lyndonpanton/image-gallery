@@ -1,0 +1,37 @@
+.gallery-image {
+    
+}
+
+.gallery-image-caption {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.gallery-image-single {
+    width: 50%;
+    aspect-ratio: 1 / 1;
+}
+
+.gallery-image-triple {
+    width: 20%;
+    aspect-ratio: 1 / 1;
+}
+
+.gallery-image-full {
+    width: 15%;
+    aspect-ratio: 1 / 1;
+}
+
+.gallery-item {
+    text-align: center;
+}
+
+#gallery {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
