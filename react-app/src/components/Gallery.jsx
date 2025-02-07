@@ -60,6 +60,12 @@ const Gallery = () => {
             </button>
 
             <section id="gallery-items">
+                {
+                    /*
+                        Use JSX to determine how the page should be displayed
+                        depending on the current mode (single, triple, full)
+                    */
+                }
                 <article className="gallery-item">
                     <img
                         className="gallery-image-single"
