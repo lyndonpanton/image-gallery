@@ -1,0 +1,20 @@
+.button-image-view {
+    transition: border-color 0.25s;
+
+    border: 1px solid white;
+    border-radius: 2px;
+    padding: 0.6em 1.2em;
+
+    background-color: #1a1a1a;
+
+    cursor: pointer;
+
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 1em;
+}
+
+.button-image-view:active {
+    color: #1a1a1a;
+    background-color: white;
+}

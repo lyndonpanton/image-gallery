@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './css/Gallery.css'
 
-const Gallery = () => {
+const Gallery = (props) => {
     function updateGallery(e) {
         if (e.target.id == "gallery-button-left" || e.target.parentElement.id == "gallery-button-left") {
             const newGalleryIndex = (galleryIndex - 1 >= 0)
@@ -9,14 +9,14 @@ const Gallery = () => {
                     : galleryImages.length - 1;
 
             setGalleryIndex(newGalleryIndex);
-            console.log("Left")
         }else {
             setGalleryIndex((galleryIndex + 1) % galleryImages.length);
-            console.log("Right");
         }
     }
 
     const [galleryIndex, setGalleryIndex] = useState(0);
+    console.log(props.viewOptions);
+    console.log(props.viewIndex);
 
     const galleryImages = [
         {
@@ -68,7 +68,7 @@ const Gallery = () => {
                 }
                 <article className="gallery-item">
                     <img
-                        className="gallery-image-single"
+                        className={ "gallery-image-" + props.viewOptions[props.viewIndex] }
                         src={ galleryImages[galleryIndex].url }
                     />
                     <p className="gallery-image-caption">{ galleryImages[galleryIndex].name }</p>
