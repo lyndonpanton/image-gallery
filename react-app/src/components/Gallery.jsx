@@ -15,8 +15,6 @@ const Gallery = (props) => {
     }
 
     const [galleryIndex, setGalleryIndex] = useState(0);
-    console.log(props.viewOptions);
-    console.log(props.viewIndex);
 
     const galleryImages = [
         {
@@ -55,9 +53,12 @@ const Gallery = (props) => {
 
     return (
         <section id="gallery">
-            <button id="gallery-button-left" onClick={ updateGallery }>
-                <i className="fa-solid fa-circle-chevron-left"></i>
-            </button>
+            {
+                props.viewIndex != 2 &&
+                <button id="gallery-button-left" onClick={ updateGallery }>
+                    <i className="fa-solid fa-circle-chevron-left"></i>
+                </button>
+            }
 
             <section id="gallery-items">
                 {
@@ -65,19 +66,42 @@ const Gallery = (props) => {
                         Use JSX to determine how the page should be displayed
                         depending on the current mode (single, triple, full)
                     */
+                    props.viewIndex == 0 &&
+                    <article className="gallery-item">
+                        <img
+                            className={ "gallery-image-" + props.viewOptions[props.viewIndex] }
+                            src={ galleryImages[galleryIndex].url }
+                        />
+                        <p className="gallery-image-caption">{ galleryImages[galleryIndex].name }</p>
+                    </article>
                 }
-                <article className="gallery-item">
+                {
+                    props.viewIndex == 1 &&
+                    <article className="gallery-item">
+                        <img
+                            className={ "gallery-image-" + props.viewOptions[props.viewIndex] }
+                            src={ galleryImages[galleryIndex].url }
+                        />
+                        <p className="gallery-image-caption">{ galleryImages[galleryIndex].name }</p>
+                    </article>
+                }
+                {
+                    props.viewIndex == 2 &&
+                    <article className="gallery-item">
                     <img
                         className={ "gallery-image-" + props.viewOptions[props.viewIndex] }
                         src={ galleryImages[galleryIndex].url }
                     />
                     <p className="gallery-image-caption">{ galleryImages[galleryIndex].name }</p>
-                </article>
+                    </article>
+                }
             </section>
-
-            <button id="gallery-button-right" onClick={ updateGallery }>
-                <i className="fa-solid fa-circle-chevron-right"></i>
-            </button>
+            {
+                props.viewIndex != 2 &&
+                <button id="gallery-button-right" onClick={ updateGallery }>
+                    <i className="fa-solid fa-circle-chevron-right"></i>
+                </button>
+            }
         </section>
     )
 };
