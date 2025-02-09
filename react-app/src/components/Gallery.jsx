@@ -41,6 +41,14 @@ const Gallery = (props) => {
     /* Methods*/
     function updateGallery(e) {
         if (e.target.id == "gallery-button-left" || e.target.parentElement.id == "gallery-button-left") {
+            const newPreviousGalleryIndex = (galleryIndex) % galleryImages.length;
+            const newGalleryIndex = (galleryIndex + 1) % galleryImages.length;
+            const newNextGalleryIndex = (galleryIndex + 2) % galleryImages.length;
+
+            setPreviousGalleryIndex(newPreviousGalleryIndex);
+            setGalleryIndex(newGalleryIndex);
+            setNextGalleryIndex(newNextGalleryIndex);
+        } else {
             const newGalleryIndex = (galleryIndex - 1 >= 0)
                     ? galleryIndex - 1
                     : galleryImages.length - 1;
@@ -53,26 +61,9 @@ const Gallery = (props) => {
                 ? galleryIndex
                 : newGalleryIndex + 1;
 
-            /*
-                9 0 1 (start, 0)
-                8 9 0 (left, -1)
-                7 8 9 (left, 8)
-                6 7 8 (left, 7)
-                5 6 7 (left, 6)
-            */
-
             setPreviousGalleryIndex(newPreviousGalleryIndex);
             setGalleryIndex(newGalleryIndex);
             setNextGalleryIndex(newNextGalleryIndex);
-        } else {
-            const newPreviousGalleryIndex = (galleryIndex) % galleryImages.length;
-            const newGalleryIndex = (galleryIndex + 1) % galleryImages.length;
-            const newNextGalleryIndex = (galleryIndex + 2) % galleryImages.length;
-
-            setPreviousGalleryIndex(newPreviousGalleryIndex);
-            setGalleryIndex(newGalleryIndex);
-            setNextGalleryIndex(newNextGalleryIndex);
-            console.log("right");
         }
     }
 
@@ -107,7 +98,7 @@ const Gallery = (props) => {
                 }
                 {
                     props.viewIndex == 1 &&
-                    <div>
+                    <div id="gallery-view-triple">
                         <article className="gallery-item">
                             <img
                                 className={ "gallery-image-" + props.viewOptions[props.viewIndex] }
