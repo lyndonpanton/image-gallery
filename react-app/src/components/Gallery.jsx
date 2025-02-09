@@ -45,10 +45,26 @@ const Gallery = (props) => {
                     ? galleryIndex - 1
                     : galleryImages.length - 1;
 
-            previousGalleryIndex = 0;
-            nextGalleryIndex = (newGalleryIndex + 1) % galleryImages.length;
+            const newPreviousGalleryIndex = (galleryIndex - 2 >= 0)
+                ? galleryIndex - 2
+                : newGalleryIndex - 1;
+
+            const newNextGalleryIndex = (galleryIndex >= 0)
+                ? galleryIndex
+                : newGalleryIndex + 1;
+
+            /*
+                9 0 1 (start, 0)
+                8 9 0 (left, -1)
+                7 8 9 (left, 8)
+                6 7 8 (left, 7)
+                5 6 7 (left, 6)
+            */
+
+            setPreviousGalleryIndex(newPreviousGalleryIndex);
             setGalleryIndex(newGalleryIndex);
-        }else {
+            setNextGalleryIndex(newNextGalleryIndex);
+        } else {
             const newGalleryIndex = (galleryIndex + 1) % galleryImages.length;
             previousGalleryIndex = 0;
             nextGalleryIndex = (newGalleryIndex + 1) % galleryImages.length;
@@ -57,7 +73,6 @@ const Gallery = (props) => {
     }
 
     /* State variables */
-    // let previousGalleryIndex = galleryImages.length - 1;
     const [previousGalleryIndex, setPreviousGalleryIndex] = useState(galleryImages.length - 1);
     const [galleryIndex, setGalleryIndex] = useState(0);
     const [nextGalleryIndex, setNextGalleryIndex] = useState(1);
