@@ -2,20 +2,7 @@ import { useState } from 'react';
 import './css/Gallery.css'
 
 const Gallery = (props) => {
-    function updateGallery(e) {
-        if (e.target.id == "gallery-button-left" || e.target.parentElement.id == "gallery-button-left") {
-            const newGalleryIndex = (galleryIndex - 1 >= 0)
-                    ? galleryIndex - 1
-                    : galleryImages.length - 1;
-
-            setGalleryIndex(newGalleryIndex);
-        }else {
-            setGalleryIndex((galleryIndex + 1) % galleryImages.length);
-        }
-    }
-
-    const [galleryIndex, setGalleryIndex] = useState(0);
-
+    /* Data */
     const galleryImages = [
         {
             name: "Pygmy Hippopotamus",
@@ -51,6 +38,30 @@ const Gallery = (props) => {
         }
     ];
 
+    /* Methods*/
+    function updateGallery(e) {
+        if (e.target.id == "gallery-button-left" || e.target.parentElement.id == "gallery-button-left") {
+            const newGalleryIndex = (galleryIndex - 1 >= 0)
+                    ? galleryIndex - 1
+                    : galleryImages.length - 1;
+
+            previousGalleryIndex = 0;
+            nextGalleryIndex = (newGalleryIndex + 1) % galleryImages.length;
+            setGalleryIndex(newGalleryIndex);
+        }else {
+            const newGalleryIndex = (galleryIndex + 1) % galleryImages.length;
+            previousGalleryIndex = 0;
+            nextGalleryIndex = (newGalleryIndex + 1) % galleryImages.length;
+            setGalleryIndex(newGalleryIndex);
+        }
+    }
+
+    /* State variables */
+    // let previousGalleryIndex = galleryImages.length - 1;
+    const [previousGalleryIndex, setPreviousGalleryIndex] = useState(galleryImages.length - 1);
+    const [galleryIndex, setGalleryIndex] = useState(0);
+    const [nextGalleryIndex, setNextGalleryIndex] = useState(1);
+
     return (
         <section id="gallery">
             {
@@ -77,23 +88,41 @@ const Gallery = (props) => {
                 }
                 {
                     props.viewIndex == 1 &&
-                    <article className="gallery-item">
+                    <div>
+                        <article className="gallery-item">
+                            <img
+                                className={ "gallery-image-" + props.viewOptions[props.viewIndex] }
+                                src={ galleryImages[previousGalleryIndex].url }
+                            />
+                            <p className="gallery-image-caption">{ galleryImages[previousGalleryIndex].name }</p>
+                        </article>
+                        <article className="gallery-item">
+                            <img
+                                className={ "gallery-image-" + props.viewOptions[props.viewIndex] }
+                                src={ galleryImages[galleryIndex].url }
+                            />
+                            <p className="gallery-image-caption">{ galleryImages[galleryIndex].name }</p>
+                        </article>
+                        <article className="gallery-item">
+                            <img
+                                className={ "gallery-image-" + props.viewOptions[props.viewIndex] }
+                                src={ galleryImages[nextGalleryIndex].url }
+                            />
+                            <p className="gallery-image-caption">{ galleryImages[nextGalleryIndex].name }</p>
+                        </article>
+                    </div>
+                }
+                {
+                    props.viewIndex == 2 &&
+                    <div>
+                        <article className="gallery-item">
                         <img
                             className={ "gallery-image-" + props.viewOptions[props.viewIndex] }
                             src={ galleryImages[galleryIndex].url }
                         />
                         <p className="gallery-image-caption">{ galleryImages[galleryIndex].name }</p>
-                    </article>
-                }
-                {
-                    props.viewIndex == 2 &&
-                    <article className="gallery-item">
-                    <img
-                        className={ "gallery-image-" + props.viewOptions[props.viewIndex] }
-                        src={ galleryImages[galleryIndex].url }
-                    />
-                    <p className="gallery-image-caption">{ galleryImages[galleryIndex].name }</p>
-                    </article>
+                        </article>
+                    </div>
                 }
             </section>
             {
