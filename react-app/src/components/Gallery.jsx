@@ -65,10 +65,14 @@ const Gallery = (props) => {
             setGalleryIndex(newGalleryIndex);
             setNextGalleryIndex(newNextGalleryIndex);
         } else {
+            const newPreviousGalleryIndex = (galleryIndex) % galleryImages.length;
             const newGalleryIndex = (galleryIndex + 1) % galleryImages.length;
-            previousGalleryIndex = 0;
-            nextGalleryIndex = (newGalleryIndex + 1) % galleryImages.length;
+            const newNextGalleryIndex = (galleryIndex + 2) % galleryImages.length;
+
+            setPreviousGalleryIndex(newPreviousGalleryIndex);
             setGalleryIndex(newGalleryIndex);
+            setNextGalleryIndex(newNextGalleryIndex);
+            console.log("right");
         }
     }
 
